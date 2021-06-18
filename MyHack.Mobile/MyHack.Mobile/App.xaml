@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyHack.Mobile.App">
+  <Application.Resources>
+
+    <!-- Application resource dictionary -->
+    <ResourceDictionary>
+      <Color x:FactoryMethod="FromHex" x:Key="BgColor">
+        <x:Arguments>
+          <x:String>#EEEEEE</x:String>
+        </x:Arguments>
+      </Color>
+      
+      <Color x:FactoryMethod="FromHex" x:Key="TileColor">
+        <x:Arguments>
+          <x:String>#555555</x:String>
+        </x:Arguments>
+      </Color>
+      
+      <Color x:FactoryMethod="FromHex" x:Key="TileTextColor">
+        <x:Arguments>
+          <x:String>#FFFFFF</x:String>
+        </x:Arguments>
+      </Color>
+
+      <OnPlatform x:Key="rowHeight"
+                  x:TypeArguments="x:Int32"
+                  iOS="60"
+                  Android="-1"
+                  WinPhone="85" />
+    
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

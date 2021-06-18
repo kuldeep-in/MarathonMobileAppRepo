@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Details"
+             x:Class="MyHack.Mobile.Views.TrainingDetails">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <OnPlatform x:Key="rowHeight"
+                  x:TypeArguments="x:Int32"
+                  iOS="60"
+                  Android="-1"
+                  WinPhone="85" />
+    </ResourceDictionary>
+    
+  </ContentPage.Resources>
+  <!--<ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal">-->
+    <ListView x:Name="details"
+              ItemsSource="{Binding DetailsList}"
+              HasUnevenRows = "true"
+              RowHeight="{StaticResource rowHeight}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.View>
+              <Grid ColumnSpacing="1" RowSpacing="5" Padding="15, 5, 15, 15">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="5" />
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="8" />
+                  <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Week"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       FontAttributes="Italic"
+                       FontSize="25"/>
+                <Label Text="{Binding Week}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       FontAttributes="Italic"
+                       FontSize="25"/>
+                <Label Text="{Binding Day1}"
+                       Grid.Row="1"
+                       Grid.Column="5"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+                <Label Text="{Binding Day2}"
+                       Grid.Row="2"
+                       Grid.Column="5"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+                <Label Text="{Binding Day3}"
+                       Grid.Row="3"
+                       Grid.Column="5"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+                <Label Text="{Binding Day4}"
+                       Grid.Row="4"
+                       Grid.Column="5"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+                <Label Text="{Binding Day5}"
+                       Grid.Row="5"
+                       Grid.Column="5"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+                <Label Text="{Binding Day6}"
+                       Grid.Row="6"
+                       Grid.Column="5"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+                <Label Text="{Binding Day7}"
+                       Grid.Row="7"
+                       Grid.Column="5"
+                       FontAttributes="Bold"
+                       FontSize="20"/>
+                
+              <Label Text="Day1"
+                       Grid.Row="1"
+                       Grid.Column="3"
+                       FontAttributes="Italic"
+                       FontSize="20"/>
+              <Label Text="Day2"
+                       Grid.Row="2"
+                       Grid.Column="3"
+                       FontAttributes="Italic"
+                       FontSize="20"/>
+              <Label Text="Day3"
+                       Grid.Row="3"
+                       Grid.Column="3"
+                       FontAttributes="Italic"
+                       FontSize="20"/>
+              <Label Text="Day4"
+                       Grid.Row="4"
+                       Grid.Column="3"
+                       FontAttributes="Italic"
+                       FontSize="20"/>
+              <Label Text="Day5"
+                       Grid.Row="5"
+                       Grid.Column="3"
+                       FontAttributes="Italic"
+                       FontSize="20"/>
+              <Label Text="Day6"
+                       Grid.Row="6"
+                       Grid.Column="3"
+                       FontAttributes="Italic"
+                       FontSize="20"/>
+                <Label Text="Day7"
+                       Grid.Row="7"
+                       Grid.Column="3"
+                       FontAttributes="Italic"
+                       FontSize="20"/>
+              
+              </Grid>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  <!--</ScrollView>-->
+</ContentPage>

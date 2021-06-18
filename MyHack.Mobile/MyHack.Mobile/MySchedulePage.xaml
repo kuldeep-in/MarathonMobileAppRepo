@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyHack.Mobile.Converters;assembly=MyHack.Mobile"
+             xmlns:localH="clr-namespace:MyHack.Mobile.Helper;assembly=MyHack.Mobile"
+             x:Class="MyHack.Mobile.MySchedulePage"
+             Title="My Schedule">
+  
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:ImageResourceConverter x:Key="imageResourceCvt" />
+      <local:DateVisibilityConverter x:Key="dateVisibilityCvt" />
+      <OnPlatform x:Key="rowHeight"
+                  x:TypeArguments="x:Int32"
+                  iOS="60"
+                  Android="-1"
+                  WinPhone="85" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  
+    <Grid ColumnSpacing="0" RowSpacing="0" Padding="0, 0, 0, 0">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+              </Grid.RowDefinitions>
+    <BoxView Color="{StaticResource TileColor}" Grid.Row="0"  /> 
+    <BoxView Color="{StaticResource TileColor}" Grid.Row="1"  /> 
+    <BoxView Color="{StaticResource BgColor}" Grid.Row="2"  /> 
+      
+    <Label x:name="lbl1" 
+           Grid.Row="0"
+           Margin="12,6,12,0"
+           TextColor="{StaticResource TileTextColor}"
+           Text="{Binding TodaysEvent}" 
+           FontAttributes="Bold" FontSize="22"></Label>
+     <Label x:name="lbl2" 
+           Grid.Row="1"
+           Margin="12,0,12,6"
+            TextColor="{StaticResource TileTextColor}"
+           Text="{Binding RemainingDays}" 
+           FontAttributes="Italic" FontSize="18"></Label>
+    
+    <ListView x:Name="mySchedule" 
+              Grid.Row="2"
+              ItemsSource="{Binding MyScheduleList}" 
+              HasUnevenRows = "true" 
+              RowHeight="{StaticResource rowHeight}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+
+          <!--<ViewCell>
+            <StackLayout BackgroundColor="#eee" Orientation="Horizontal">
+              <Image Source="{Binding Workout, Converter={StaticResource imageResourceCvt}}" />
+              <StackLayout Orientation="Vertical">
+                <Label Text="{Binding Workout}" TextColor="#f35e20" />
+                <Label Text="{Binding Date}" HorizontalOptions="EndAndExpand" TextColor="#503026" />
+              </StackLayout>
+            </StackLayout>
+          </ViewCell>-->
+
+          <ViewCell>
+            <Grid ColumnSpacing="0" RowSpacing="0" Padding="0, 10, 0, 0">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <Image Source="{Binding Workout, Converter={StaticResource imageResourceCvt}}" 
+                     Grid.Row="0" 
+                     Grid.Column="0" 
+                     Margin="10,0"
+                     Grid.RowSpan="2" />
+                     <!--BackgroundColor="{Binding Date, Converter={StaticResource dateColorCvt}}" />-->
+              <Image Source="{localH:ImageResource MyHack.Mobile.Images.right1.png}"
+                     Grid.Row="0"
+                     Grid.Column="3"
+                     Margin="10,0"
+                     Grid.RowSpan="2" 
+                      IsVisible="{Binding Date, Converter={StaticResource dateVisibilityCvt}}"/>
+                     
+              <Label Text="{Binding Workout}" 
+                     Grid.Row="0" 
+                     Grid.Column="2" 
+                     FontAttributes="Bold" 
+                     FontSize="16" />
+                     <!--BackgroundColor="{Binding Date, Converter={StaticResource dateColorCvt}}"/>-->
+              <Label Text="{Binding Date}" 
+                     Grid.Row="1" 
+                     Grid.Column="2" 
+                     FontAttributes="Italic" 
+                     FontSize="14" />
+                     <!--BackgroundColor="{Binding Date, Converter={StaticResource dateColorCvt}}" />-->
+              <BoxView Color="Black" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" HeightRequest = "1" Margin="0,5,0,0"/>
+            </Grid>
+          </ViewCell>
+          
+          <!--<ImageCell Text="{Binding Workout}"
+                   Detail="{Binding Date}"
+                   DetailColor="Gray"
+                       ImageSource="{Binding Workout, Converter={StaticResource imageResourceCvt}}"/>-->                   
+          
+          <!--<ViewCell>
+            <ViewCell.View>
+              <StackLayout Padding="15, 5, 0, 5"
+                           Orientation="Horizontal"
+                           Spacing="15">
+                <StackLayout Orientation="Vertical" Spacing="5">
+                  <Label Text="{Binding Date}" ></Label>
+                  <Label Text="{Binding Workout}" FontAttributes="Bold"></Label>
+                </StackLayout>
+              </StackLayout>
+            </ViewCell.View>
+          </ViewCell>-->
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </Grid>
+</ContentPage>

@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyHack.Mobile.Helper;assembly=MyHack.Mobile"
+             x:Class="MyHack.Mobile.Views.Home"
+             Title="My Run">
+  
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Settings" Order="Secondary" Activated="SettingsClicked">
+        <ToolbarItem.Icon>
+            <OnPlatform x:TypeArguments="FileImageSource" iOS="Refresh.png" Android="settings.png" WinPhone="refresh.png" />
+        </ToolbarItem.Icon>
+    </ToolbarItem>
+  <ToolbarItem Text="About" Order="Secondary" Activated="SettingsClicked">
+    </ToolbarItem>
+</ContentPage.ToolbarItems>
+
+  <Grid ColumnSpacing="0" RowSpacing="0" Padding="0, 0, 0, 0" >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <BoxView Color="Gray" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+    
+    <BoxView Color="#00ffa5" Grid.Row="1" Grid.Column="0" />
+    <BoxView Color="#c1f7ff" Grid.Row="1" Grid.Column="1"/>
+    <BoxView Color="#bdcacc" Grid.Row="2" Grid.Column="0" />
+    <BoxView Color="#e5edb1" Grid.Row="2" Grid.Column="1"/>
+
+    <Image Source="{local:ImageResource MyHack.Mobile.Images.banner1.jpg}"
+            Grid.Row="0"
+            Grid.Column="0"
+           HorizontalOptions="FillAndExpand"
+            Grid.ColumnSpan="2" />
+    <StackLayout Orientation="Vertical" Spacing="8" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Padding="10, 10, 10, 10" >
+      <Label Text="{Binding TargetEvent}"
+           FontSize="22" TextColor="White" FontAttributes="Bold" />
+      <Label Text="{Binding EventDate}" TextColor="White"
+           FontSize="18" />
+      <Label Text="{Binding TodaysEvent}" TextColor="White" FontAttributes="Bold"
+           FontSize="18" />
+    </StackLayout>
+    
+    <Grid ColumnSpacing="0" RowSpacing="0" Grid.Row="1" Grid.Column="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="25" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Image Source="{local:ImageResource MyHack.Mobile.Images.schedule1.png}"
+                           Grid.Row="0" Grid.Column="0">
+      <Image.GestureRecognizers>
+        <TapGestureRecognizer
+                Tapped="OnScheduleTapped"
+                NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <Label Text="My Schedule" Grid.Row="1" Grid.Column="0"
+             
+             FontSize="18"
+             HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+    </Grid>
+
+    <Grid ColumnSpacing="0" RowSpacing="0" Grid.Row="1" Grid.Column="1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="25" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Image Source="{local:ImageResource MyHack.Mobile.Images.create1.png}"
+                           Grid.Row="0" Grid.Column="0">
+      <Image.GestureRecognizers>
+        <TapGestureRecognizer
+                Tapped="OnCreateTapped"
+                NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <Label Text="Create Plan" Grid.Row="1" Grid.Column="0"
+             
+             FontSize="18"
+             HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+    </Grid>
+
+    <Grid ColumnSpacing="0" RowSpacing="0" Grid.Row="2" Grid.Column="0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="25" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Image Source="{local:ImageResource MyHack.Mobile.Images.event.png}"
+             Grid.Row="0" Grid.Column="0">
+      <Image.GestureRecognizers>
+        <TapGestureRecognizer
+                Tapped="OnEventTapped"
+                NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <Label Text="Running Event" Grid.Row="1" Grid.Column="0" 
+             
+             FontSize="18" 
+             HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+    </Grid>
+
+    <Grid ColumnSpacing="0" RowSpacing="0" Grid.Row="2" Grid.Column="1">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="25" />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Image Source="{local:ImageResource MyHack.Mobile.Images.wplan.png}"
+                           Grid.Row="0" Grid.Column="0">
+      <Image.GestureRecognizers>
+        <TapGestureRecognizer
+                Tapped="OnPlanTapped"
+                NumberOfTapsRequired="1" />
+        </Image.GestureRecognizers>
+      </Image>
+      <Label Text="Workout Plan" Grid.Row="1" Grid.Column="0"
+             
+             FontSize="18"
+             HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+    </Grid>
+  </Grid>
+
+  <!--<StackLayout VerticalOptions="Center"
+               IsVisible="true">
+    <Frame>
+      <Label Text="Welcome to The Store"
+             Font="Bold, Large"
+             HorizontalOptions="Center"
+             TextColor="Black" />
+    </Frame>
+ 
+    <ActivityIndicator IsRunning="True"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand"
+                       Color="Blue" />
+  </StackLayout>-->
+
+</ContentPage>
+
+    <!--<StackLayout Orientation="Vertical" Spacing="10" Grid.Row="1" Grid.Column="0" Padding="5, 30, 5, 5" >
+      <Image Source="{local:ImageResource MyHack.Mobile.Images.1.png}"
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     Grid.ColumnSpan="2" />
+      <Label Text="nn"
+           FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="End"/>
+    </StackLayout>-->

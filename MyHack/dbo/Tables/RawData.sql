@@ -1,0 +1,18 @@
+﻿CREATE TABLE [dbo].[RawData]
+(
+	[RawDataId]		BIGINT            IDENTITY (1, 1) NOT NULL,
+	[Tag]			NVARCHAR (512) NULL,
+	[EventDate]		DATETIME NOT NULL,
+	[EventName]		NVARCHAR (512) NOT NULL,
+	[Triathlon]		NVARCHAR (512) NULL,
+	[Ultra]			NVARCHAR (512) NULL,
+	[FullMarathon]	NVARCHAR (512) NULL,
+	[HalfMarathon]	NVARCHAR (512) NULL,
+	[TenK]			NVARCHAR (512) NULL,
+	[FiveK]			NVARCHAR (512) NULL,
+	[City]			NVARCHAR (512) NOT NULL,
+	[State]			NVARCHAR (512) NOT NULL,
+	[CreatedOn]		DATETIME       CONSTRAINT [DFRawDataCreatedOn] DEFAULT (GETDATE()) NOT NULL,
+
+	CONSTRAINT [PKRawData] PRIMARY KEY CLUSTERED ([RawDataId] ASC)
+)

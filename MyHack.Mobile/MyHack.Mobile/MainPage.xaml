@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyHack.Mobile.Converters;assembly=MyHack.Mobile"
+             x:Class="MyHack.Mobile.MainPage"
+             Title="Running Event">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:CityImageConverter x:Key="cityImageCvt" />
+      <local:RemainingDaysConverter x:Key="remainingDaysCvt" />
+      <!-- This is only an issue on the iPhone; Android and
+           WinPhone auto size the row height to the contents. -->
+      <OnPlatform x:Key="rowHeight"
+                  x:TypeArguments="x:Int32"
+                  iOS="60"
+                  Android="-1"
+                  WinPhone="85" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <Grid ColumnSpacing="0" RowSpacing="0" Padding="0, 0, 0, 0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <BoxView Color="{StaticResource TileColor}" Grid.Row="0"  />
+      <BoxView Color="{StaticResource TileColor}" Grid.Row="1"  />
+      <BoxView Color="{StaticResource BgColor}" Grid.Row="2"  />
+
+      <Label x:name="lbl1"
+             Grid.Row="0"
+             Margin="12,6,12,0"
+             Text="{Binding TargetEvent}"
+             TextColor="{StaticResource TileTextColor}"
+             FontAttributes="Bold" FontSize="22"></Label>
+      <Label x:name="lbl2"
+            Grid.Row="1"
+            Margin="12,0,12,6"
+             TextColor="{StaticResource TileTextColor}"
+            Text="{Binding EventDate}"
+            FontAttributes="Italic" FontSize="18"></Label>
+
+    <ListView x:Name="allevents" 
+              Grid.Row="2"
+              ItemsSource="{Binding EventList}" 
+              HasUnevenRows = "true" 
+              RowHeight="{StaticResource rowHeight}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.View>
+              <Grid ColumnSpacing="0" RowSpacing="0" Padding="0, 15, 0, 0">
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                  <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="Auto" />
+                  <ColumnDefinition Width="8" />
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="45" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding Location, Converter={StaticResource cityImageCvt}}"
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       Margin="10,0"
+                       Grid.RowSpan="3" />
+                <Label Text="{Binding Location}"
+                       Grid.Row="3"
+                       Grid.Column="2"
+                       FontSize="16"/>
+
+                <Label Text="{Binding Name}"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       Margin="10,0,0,0"
+                       Grid.ColumnSpan="4"
+                       FontAttributes="Bold"
+                       FontSize="16"/>
+                <Label Text="{Binding EventDate}"
+                       Grid.Row="2"
+                       Grid.Column="2"
+                       FontSize="14"/>
+                <Label Text="{Binding Category}"
+                       Grid.Row="1"
+                       Grid.Column="2"
+                       FontAttributes="Italic"
+                       FontSize="14"/>
+
+                <Label Text="{Binding EventDate, Converter={StaticResource remainingDaysCvt}}"
+                       Grid.Row="1"
+                       Grid.Column="3"
+                       Margin="5,0,0,0"
+                       FontAttributes="Bold"
+                       FontSize="14"/>
+                <Label Text="Days"
+                       Grid.Row="2"
+                       Grid.Column="3"
+                       FontSize="14"/>
+                <Label Text="To Go"
+                       Grid.Row="3"
+                       Grid.Column="3"
+                       FontSize="14"/>
+
+                <BoxView Color="White" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" HeightRequest = "8" Margin="0,0,0,0"/>
+              </Grid>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    </Grid>
+  </ContentPage>

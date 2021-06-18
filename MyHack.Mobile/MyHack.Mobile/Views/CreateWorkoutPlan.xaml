@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MyHack.Mobile.Helper;assembly=MyHack.Mobile"
+             x:Class="MyHack.Mobile.Views.CreateWorkoutPlan"
+             Title="Create Workout Plan">
+
+
+  <Grid ColumnSpacing="0" RowSpacing="0" Padding="0, 0, 0, 0">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <BoxView Color="{StaticResource TileColor}" Grid.Row="0"  />
+    <BoxView Color="{StaticResource TileColor}" Grid.Row="1"  />
+    <BoxView Color="{StaticResource BgColor}" Grid.Row="2"  />
+
+    <Label x:name="lbl1"
+           Grid.Row="0"
+           Margin="12,6,12,0"
+           Text="{Binding TargetEvent}"
+           TextColor="{StaticResource TileTextColor}"
+           FontAttributes="Bold" FontSize="22"></Label>
+    <Label x:name="lbl2"
+          Grid.Row="1"
+          Margin="12,0,12,6"
+           TextColor="{StaticResource TileTextColor}"
+          Text="{Binding TrainingPlan}"
+          FontAttributes="Italic" FontSize="18"></Label>
+
+    <Grid ColumnSpacing="0" RowSpacing="10" Padding="10" Grid.Row="2">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <Label
+           Grid.Row="0"
+           Margin="12,25,12,0"
+           Text="Select a Category"
+           TextColor="#000000"
+           FontAttributes="Bold" FontSize="16"></Label>
+      
+      <local:BindablePicker 
+            x:Name="picker1" 
+            Grid.Row="1"
+            Margin="12, 0"
+            ItemsSource="{Binding CategoryList}"
+            SelectedIndexChanged="Picker1_SelectedIndexChanged"
+            DisplayMember="CategoryName"/>
+
+      <Label
+           Grid.Row="2"
+           Margin="12,15,12,0"
+           Text="Select a Workout Plan"
+           TextColor="#000000"
+           FontAttributes="Bold" FontSize="16"></Label>
+      
+      <local:BindablePicker
+            x:Name="picker2"
+            Margin="12,0"
+            Grid.Row="3"
+            ItemsSource="{Binding WorkOutPlanList}"
+            SelectedIndexChanged="Picker2_SelectedIndexChanged"
+            DisplayMember="Name"/>
+
+      <Label 
+           Grid.Row="4"
+           Margin="12,15,12,0"
+           Text="Select an Event"
+           TextColor="#000000"
+           FontAttributes="Bold" FontSize="16"></Label>
+      
+      <local:BindablePicker
+            x:Name="picker3"
+            Margin="12,0"
+            Grid.Row="5"
+            ItemsSource="{Binding EventList}"
+            DisplayMember="Name"/>
+      
+      <!--<Picker x:Name="picker1" 
+              Grid.Row="1"
+              Margin="0,25,0,0"
+              SelectedIndexChanged="Picker0_SelectedIndexChanged"
+              />-->
+
+
+      <Button Grid.Row="6" BorderRadius="15" Text="Create Your Plan" Margin ="32,0" Clicked="CreateButton_Clicked"/>
+
+    </Grid>
+  </Grid>
+  
+</ContentPage>
